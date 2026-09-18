@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOP Library | Company ABC</title>
-<meta name="description" content="ISO-based SOP Library for Company ABC">
+<title>LearningStudio42 | SOP & Process Documentation Portfolio</title>
+<meta name="description" content="LearningStudio42 — Learning Strategy, Instructional Design, SOP and Process Documentation portfolio.">
 <style>
 :root{
   --navy:#173f63; --blue:#245b86; --blue2:#2f6f9f; --ink:#263746;
@@ -38,13 +38,14 @@ a{text-decoration:none;color:inherit}
 .crumb{font-size:12px;color:#7d8a95;margin-bottom:20px}
 .hero{
  background:linear-gradient(135deg,#fff 0%,#f0f6fa 100%);border:1px solid var(--line);
- border-radius:12px;padding:30px 32px;box-shadow:var(--shadow);position:relative;overflow:hidden
+ border-radius:12px;padding:32px;box-shadow:var(--shadow);position:relative;overflow:hidden
 }
 .hero:after{content:"";position:absolute;right:-70px;top:-90px;width:260px;height:260px;border-radius:50%;
  background:radial-gradient(circle,#d9eaf5 0%,transparent 65%)}
-.hero h1{font-size:30px;margin:0 0 9px;color:var(--navy)}
-.hero p{margin:0;max-width:760px;color:#61717e;line-height:1.6;font-size:14px}
-.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:19px}
+.hero h1{font-size:30px;margin:0 0 9px;color:var(--navy);position:relative;z-index:1}
+.hero .positioning{font-size:16px;font-weight:700;color:var(--blue);margin-bottom:10px;position:relative;z-index:1}
+.hero p{margin:0;max-width:820px;color:#61717e;line-height:1.65;font-size:14px;position:relative;z-index:1}
+.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:19px;position:relative;z-index:1}
 .tag{font-size:11px;border:1px solid #d7e2ea;background:#fff;border-radius:20px;padding:6px 10px;color:#526572}
 .section-head{display:flex;align-items:end;justify-content:space-between;margin:34px 0 15px}
 .section-head h2{margin:0;color:var(--navy);font-size:19px}
@@ -67,6 +68,23 @@ a{text-decoration:none;color:inherit}
 .subfiles{border-top:1px solid var(--line);padding:14px 21px;background:#fbfcfd}
 .subfiles summary{cursor:pointer;font-size:11px;font-weight:700;color:#5d6d79}
 .placeholder{margin-top:10px;padding:10px;border:1px dashed #c9d5de;border-radius:6px;color:#87949e;font-size:11px;background:#fff}
+.approach{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:17px
+}
+.approach-step{
+ background:#fff;border:1px solid var(--line);border-radius:10px;padding:19px;
+ box-shadow:var(--shadow)
+}
+.step-number{
+ font-size:11px;font-weight:800;color:var(--blue);letter-spacing:1px;margin-bottom:8px
+}
+.approach-step h3{font-size:15px;color:var(--navy);margin:0 0 7px}
+.approach-step p{font-size:12px;line-height:1.55;color:#6b7984;margin:0}
+.outcome{
+ margin-top:17px;background:#eef5f9;border:1px solid #d6e5ee;border-radius:10px;
+ padding:19px 21px;color:#536673;font-size:13px;line-height:1.65
+}
+.outcome strong{color:var(--navy)}
 .library-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow)}
 .library-table th{background:var(--navy);color:#fff;text-align:left;font-size:11px;padding:12px}
 .library-table td{padding:12px;border-bottom:1px solid var(--line);font-size:12px}
@@ -76,164 +94,566 @@ a{text-decoration:none;color:inherit}
 .preview img{width:100%;display:block;border-radius:6px}
 .note{margin-top:17px;padding:14px 16px;border-left:4px solid var(--accent);background:#fffdf5;color:#65727b;font-size:12px;line-height:1.5}
 footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:11px;color:#8a969e;display:flex;justify-content:space-between}
-@media(max-width:980px){.cards{grid-template-columns:1fr}.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:24px}.search{width:180px}.topnav{display:none}}
-@media(max-width:560px){.topbar{padding:0 15px}.search{display:none}.hero{padding:23px}.hero h1{font-size:25px}}
+@media(max-width:980px){
+ .cards{grid-template-columns:1fr}
+ .approach{grid-template-columns:1fr}
+ .layout{grid-template-columns:1fr}
+ .sidebar{display:none}
+ .main{padding:24px}
+ .search{width:180px}
+ .topnav{display:none}
+}
+@media(max-width:560px){
+ .topbar{padding:0 15px}
+ .search{display:none}
+ .hero{padding:23px}
+ .hero h1{font-size:25px}
+}
 </style>
 </head>
+
 <body>
+
 <header class="topbar">
-  <a class="brand" href="#top"><span class="brand-mark">ABC</span><span>SOP Library</span></a>
+  <a class="brand" href="#top">
+    <span class="brand-mark">LS</span>
+    <span>LearningStudio42</span>
+  </a>
+
   <nav class="topnav">
-    <a href="#library">Library</a><a href="#processes">Processes</a><a href="#about">About</a>
+    <a href="#approach">Approach</a>
+    <a href="#library">Portfolio</a>
+    <a href="#processes">Processes</a>
+    <a href="#about">About</a>
   </nav>
-  <label class="search">⌕ <input id="search" type="search" placeholder="Search SOPs..." aria-label="Search SOPs"></label>
+
+  <label class="search">⌕
+    <input id="search" type="search" placeholder="Search portfolio..." aria-label="Search portfolio">
+  </label>
 </header>
 
 <div class="layout" id="top">
+
 <aside class="sidebar">
-  <div class="side-title">Library</div>
-  <a class="side-link active" href="#library">▦ &nbsp; All documents</a>
+
+  <div class="side-title">Portfolio</div>
+  <a class="side-link active" href="#library">▦ &nbsp; SOP Library</a>
   <a class="side-link" href="#hr">♙ &nbsp; HR</a>
   <a class="side-link" href="#assets">▣ &nbsp; Asset Management</a>
   <a class="side-link" href="#inventory">▤ &nbsp; Inventory</a>
-  <div class="side-title" style="margin-top:26px">Reference</div>
+
+  <div class="side-title" style="margin-top:26px">Methodology</div>
+  <a class="side-link" href="#approach">↗ &nbsp; My approach</a>
   <a class="side-link" href="#processes">↗ &nbsp; Process map</a>
   <a class="side-link" href="#about">ⓘ &nbsp; Document control</a>
+
 </aside>
 
 <main class="main">
-  <div class="crumb">Company ABC / Knowledge Base / SOP Library</div>
+
+  <div class="crumb">LearningStudio42 / Portfolio / SOP &amp; Process Documentation</div>
 
   <section class="hero">
-    <h1>SOP Library (ISO based) for Company ABC</h1>
-    <p>A structured operational-document library covering employee onboarding, asset issue &amp; return, and inventory management.</p>
-    <div class="meta">
-      <span class="tag">Author: xxx</span>
-      <span class="tag">HR</span><span class="tag">Logistics</span><span class="tag">Inventory</span>
-      <span class="tag">Version 0.1</span><span class="tag">Demonstration</span>
+
+    <h1>SOP &amp; Process Documentation Portfolio</h1>
+
+    <div class="positioning">
+      Learning Strategy&nbsp; • &nbsp;Instructional Design&nbsp; • &nbsp;Performance Support
     </div>
+
+    <p>
+      Turning complex business processes into clear, structured and usable
+      operating documentation — combining concise written instructions,
+      process visualisation and a connected knowledge library.
+    </p>
+
+    <div class="meta">
+      <span class="tag">Learning Strategy</span>
+      <span class="tag">Instructional Design</span>
+      <span class="tag">SOP Development</span>
+      <span class="tag">Process Mapping</span>
+      <span class="tag">Performance Support</span>
+    </div>
+
   </section>
 
-  <div class="section-head" id="library"><h2>Process Library</h2><span>4 documents</span></div>
+
+  <!-- APPROACH -->
+
+  <section id="approach">
+
+    <div class="section-head">
+      <h2>How I Approach SOP &amp; Process Documentation</h2>
+      <span>From business knowledge to usable documentation</span>
+    </div>
+
+    <div class="approach">
+
+      <div class="approach-step">
+        <div class="step-number">01 — DISCOVER</div>
+        <h3>Understand the business</h3>
+        <p>
+          Review existing SOPs, policies and process material and work with
+          subject-matter experts to understand how the work is actually performed.
+        </p>
+      </div>
+
+      <div class="approach-step">
+        <div class="step-number">02 — MAP</div>
+        <h3>Map the process</h3>
+        <p>
+          Capture roles, systems, inputs, outputs, decisions, controls,
+          approvals, dependencies and exceptions from beginning to end.
+        </p>
+      </div>
+
+      <div class="approach-step">
+        <div class="step-number">03 — DOCUMENT</div>
+        <h3>Write the SOP</h3>
+        <p>
+          Convert the validated process into concise, standardised,
+          step-by-step instructions that users can follow without guesswork.
+        </p>
+      </div>
+
+      <div class="approach-step">
+        <div class="step-number">04 — VISUALISE</div>
+        <h3>Create the process visual</h3>
+        <p>
+          Develop matching flowcharts or swimlane diagrams showing the same
+          roles, activities, decisions and exceptions as the written procedure.
+        </p>
+      </div>
+
+      <div class="approach-step">
+        <div class="step-number">05 — CONNECT</div>
+        <h3>Build the library</h3>
+        <p>
+          Apply document IDs, naming conventions, version control,
+          cross-references and a structured, hyperlinked document index.
+        </p>
+      </div>
+
+      <div class="approach-step">
+        <div class="step-number">06 — VALIDATE</div>
+        <h3>Quality-check the system</h3>
+        <p>
+          Cross-check the SOP and visual one-to-one, validate the process with
+          stakeholders and ensure exceptions and control points are represented.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="outcome">
+      <strong>The objective:</strong>
+      create documentation that answers the questions a user needs answered
+      at the point of work — <strong>What happens next? Who does it? Which
+      system is used? What controls apply? And what happens when the normal
+      process changes?</strong>
+    </div>
+
+  </section>
+
+
+  <!-- PORTFOLIO -->
+
+  <div class="section-head" id="library">
+    <h2>Demonstration Project — SOP Library Architecture</h2>
+    <span>Sample portfolio work</span>
+  </div>
+
+  <div class="note">
+    <strong>About this demonstration:</strong>
+    Company ABC is a fictional demonstration case created to illustrate the
+    documentation architecture, process mapping, SOP structure, reference
+    coding and knowledge-library approach used in this portfolio.
+    It does not represent a real client engagement.
+  </div>
+
 
   <section class="cards" id="cards">
-    <article class="card" id="hr" data-search="employee onboarding HR HR-SOP-001 onboarding">
-      <div class="card-top"></div><div class="card-body">
+
+    <article class="card" id="hr"
+      data-search="employee onboarding HR HR-SOP-001 onboarding">
+
+      <div class="card-top"></div>
+
+      <div class="card-body">
+
         <div class="icon">♙</div>
+
         <h3>Employee Onboarding</h3>
-        <p>Standardise onboarding from approved joiner to completed, evidenced employee setup.</p>
-        <div class="card-meta">HR-SOP-001 · HR Operations · 6 procedures</div>
+
+        <p>
+          Standardise onboarding from approved joiner to completed,
+          evidenced employee setup.
+        </p>
+
+        <div class="card-meta">
+          HR-SOP-001 · HR Operations · 6 procedures
+        </div>
+
         <div class="actions">
-          <a class="btn primary" href="sop-files/Employee_Onboarding_SOP.docx" target="_blank" rel="noopener">Open SOP ↗</a>
+          <a class="btn primary"
+             href="sop-files/Employee_Onboarding_SOP.docx"
+             target="_blank"
+             rel="noopener">
+             Open SOP ↗
+          </a>
+
           <a class="btn secondary" href="#processes">Process</a>
         </div>
+
       </div>
-      <div class="subfiles"><details><summary>Sub-files / related resources</summary>
-        <div class="placeholder">Placeholder — Onboarding checklist</div>
-        <div class="placeholder">Placeholder — New-joiner forms</div>
-        <div class="placeholder">Placeholder — Work instructions</div>
-      </details></div>
+
+      <div class="subfiles">
+        <details>
+          <summary>Sub-files / related resources</summary>
+          <div class="placeholder">Placeholder — Onboarding checklist</div>
+          <div class="placeholder">Placeholder — New-joiner forms</div>
+          <div class="placeholder">Placeholder — Work instructions</div>
+        </details>
+      </div>
+
     </article>
 
-    <article class="card" id="assets" data-search="asset issue return inventory controller INV-SOP-002 assets">
-      <div class="card-top"></div><div class="card-body">
+
+    <article class="card" id="assets"
+      data-search="asset issue return inventory controller INV-SOP-002 assets">
+
+      <div class="card-top"></div>
+
+      <div class="card-body">
+
         <div class="icon">▣</div>
+
         <h3>Asset Issue &amp; Return</h3>
-        <p>Control assignment and return of company assets with traceable ownership and evidence.</p>
-        <div class="card-meta">INV-SOP-002 · Inventory Control · 6 procedures</div>
+
+        <p>
+          Control assignment and return of company assets with traceable
+          ownership and evidence.
+        </p>
+
+        <div class="card-meta">
+          INV-SOP-002 · Inventory Control · 6 procedures
+        </div>
+
         <div class="actions">
-          <a class="btn primary" href="sop-files/Asset_Issue_Return_SOP.docx" target="_blank" rel="noopener">Open SOP ↗</a>
+
+          <a class="btn primary"
+             href="sop-files/Asset_Issue_Return_SOP.docx"
+             target="_blank"
+             rel="noopener">
+             Open SOP ↗
+          </a>
+
           <a class="btn secondary" href="#processes">Process</a>
+
         </div>
+
       </div>
-      <div class="subfiles"><details><summary>Sub-files / related resources</summary>
-        <div class="placeholder">Placeholder — Asset handover form</div>
-        <div class="placeholder">Placeholder — Asset return checklist</div>
-        <div class="placeholder">Placeholder — Asset register work instruction</div>
-      </details></div>
+
+      <div class="subfiles">
+        <details>
+          <summary>Sub-files / related resources</summary>
+          <div class="placeholder">Placeholder — Asset handover form</div>
+          <div class="placeholder">Placeholder — Asset return checklist</div>
+          <div class="placeholder">Placeholder — Asset register work instruction</div>
+        </details>
+      </div>
+
     </article>
 
-    <article class="card" id="inventory" data-search="inventory management receiving put-away INV-SOP-001 inventory">
-      <div class="card-top"></div><div class="card-body">
+
+    <article class="card" id="inventory"
+      data-search="inventory management receiving put-away INV-SOP-001 inventory">
+
+      <div class="card-top"></div>
+
+      <div class="card-body">
+
         <div class="icon">▤</div>
+
         <h3>Inventory Management</h3>
-        <p>Control receipt, inspection, recording, put-away and availability of inventory.</p>
-        <div class="card-meta">INV-SOP-001 · Inventory Control · 5 procedures</div>
-        <div class="actions">
-          <a class="btn primary" href="sop-files/Inventory_Management_SOP.docx" target="_blank" rel="noopener">Open SOP ↗</a>
-          <a class="btn secondary" href="#inventory-map">Swimlane</a>
+
+        <p>
+          Control receipt, inspection, recording, put-away and availability
+          of inventory.
+        </p>
+
+        <div class="card-meta">
+          INV-SOP-001 · Inventory Control · 5 procedures
         </div>
+
+        <div class="actions">
+
+          <a class="btn primary"
+             href="sop-files/Inventory_Management_SOP.docx"
+             target="_blank"
+             rel="noopener">
+             Open SOP ↗
+          </a>
+
+          <a class="btn secondary" href="#inventory-map">Swimlane</a>
+
+        </div>
+
       </div>
-      <div class="subfiles"><details><summary>Sub-files / related resources</summary>
-        <div class="placeholder">Placeholder — Goods receipt checklist</div>
-        <div class="placeholder">Placeholder — Stock status work instruction</div>
-        <div class="placeholder">Placeholder — Bin/location procedure</div>
-      </details></div>
+
+      <div class="subfiles">
+        <details>
+          <summary>Sub-files / related resources</summary>
+          <div class="placeholder">Placeholder — Goods receipt checklist</div>
+          <div class="placeholder">Placeholder — Stock status work instruction</div>
+          <div class="placeholder">Placeholder — Bin/location procedure</div>
+        </details>
+      </div>
+
     </article>
 
-    <article class="card" data-search="sop library company abc master index iso">
-      <div class="card-top" style="background:#6a7e90"></div><div class="card-body">
+
+    <article class="card"
+      data-search="sop library company abc master index iso">
+
+      <div class="card-top" style="background:#6a7e90"></div>
+
+      <div class="card-body">
+
         <div class="icon" style="background:#eef0f2">▦</div>
+
         <h3>SOP Library Master</h3>
-        <p>Master library structure, scope, departments, process relationships, key terms and annexures.</p>
-        <div class="card-meta">Library master · Company ABC · Version 0.1</div>
-        <div class="actions">
-          <a class="btn primary" href="sop-files/SOP_Library_ISO_Based_Company_ABC.docx" target="_blank" rel="noopener">Open Library ↗</a>
-          <a class="btn secondary" href="#about">Details</a>
+
+        <p>
+          Master library structure, scope, departments, process relationships,
+          key terms and annexures.
+        </p>
+
+        <div class="card-meta">
+          Library master · Company ABC · Version 0.1
         </div>
+
+        <div class="actions">
+
+          <a class="btn primary"
+             href="sop-files/SOP_Library_ISO_Based_Company_ABC.docx"
+             target="_blank"
+             rel="noopener">
+             Open Library ↗
+          </a>
+
+          <a class="btn secondary" href="#about">Details</a>
+
+        </div>
+
       </div>
-      <div class="subfiles"><details><summary>Sub-files / related resources</summary>
-        <div class="placeholder">Placeholder — SOP templates</div>
-        <div class="placeholder">Placeholder — Document control register</div>
-        <div class="placeholder">Placeholder — Forms &amp; records index</div>
-      </details></div>
+
+      <div class="subfiles">
+        <details>
+          <summary>Sub-files / related resources</summary>
+          <div class="placeholder">Placeholder — SOP templates</div>
+          <div class="placeholder">Placeholder — Document control register</div>
+          <div class="placeholder">Placeholder — Forms &amp; records index</div>
+        </details>
+      </div>
+
     </article>
+
   </section>
+
+
+  <!-- CROSS REFERENCE -->
 
   <section id="processes">
-    <div class="section-head"><h2>Process Cross-Reference</h2><span>End-to-end relationship</span></div>
+
+    <div class="section-head">
+      <h2>Process Cross-Reference</h2>
+      <span>End-to-end relationship</span>
+    </div>
+
     <table class="library-table">
-      <thead><tr><th>Process</th><th>Document ID</th><th>Primary role / function</th><th>Relationship</th></tr></thead>
+
+      <thead>
+        <tr>
+          <th>Process</th>
+          <th>Document ID</th>
+          <th>Primary role / function</th>
+          <th>Relationship</th>
+        </tr>
+      </thead>
+
       <tbody>
-        <tr><td><a href="sop-files/Inventory_Management_SOP.docx" target="_blank">Inventory Management ↗</a></td><td>INV-SOP-001</td><td>Inventory Control</td><td>Manages available inventory.</td></tr>
-        <tr><td><a href="sop-files/Asset_Issue_Return_SOP.docx" target="_blank">Asset Issue &amp; Return ↗</a></td><td>INV-SOP-002</td><td>Inventory Control</td><td>Consumes available inventory for approved asset issues.</td></tr>
-        <tr><td><a href="sop-files/Employee_Onboarding_SOP.docx" target="_blank">Employee Onboarding ↗</a></td><td>HR-SOP-001</td><td>HR Operations</td><td>Depends on controlled asset assignment for required equipment.</td></tr>
+
+        <tr>
+          <td>
+            <a href="sop-files/Inventory_Management_SOP.docx"
+               target="_blank">
+               Inventory Management ↗
+            </a>
+          </td>
+          <td>INV-SOP-001</td>
+          <td>Inventory Control</td>
+          <td>Manages available inventory.</td>
+        </tr>
+
+        <tr>
+          <td>
+            <a href="sop-files/Asset_Issue_Return_SOP.docx"
+               target="_blank">
+               Asset Issue &amp; Return ↗
+            </a>
+          </td>
+          <td>INV-SOP-002</td>
+          <td>Inventory Control</td>
+          <td>
+            Consumes available inventory for approved asset issues.
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <a href="sop-files/Employee_Onboarding_SOP.docx"
+               target="_blank">
+               Employee Onboarding ↗
+            </a>
+          </td>
+          <td>HR-SOP-001</td>
+          <td>HR Operations</td>
+          <td>
+            Depends on controlled asset assignment for required equipment.
+          </td>
+        </tr>
+
       </tbody>
+
     </table>
-    <div class="note">The supplied library describes the relationship as Inventory Management → available stock → Asset Issue &amp; Return → assigned equipment / dependency closure → Employee Onboarding closure.</div>
+
+    <div class="note">
+      The demonstration library illustrates how related procedures can be
+      connected through document IDs, dependencies and cross-process references.
+    </div>
+
   </section>
+
+
+  <!-- PROCESS VISUAL -->
 
   <section id="inventory-map" class="preview">
-    <div class="section-head" style="margin-top:0"><h2>Inventory Management — Process Visual</h2><span>INV-RCV-01 to INV-RCV-05</span></div>
-    <img src="assets/inventory-management-swimlane.png" alt="Inventory Management swimlane process visual">
+
+    <div class="section-head" style="margin-top:0">
+      <h2>Inventory Management — Process Visual</h2>
+      <span>INV-RCV-01 to INV-RCV-05</span>
+    </div>
+
+    <img
+      src="assets/inventory-management-swimlane.png"
+      alt="Inventory Management swimlane process visual">
+
   </section>
+
+
+  <!-- DOCUMENT CONTROL -->
 
   <section id="about">
-    <div class="section-head"><h2>Document Control</h2><span>Library information</span></div>
+
+    <div class="section-head">
+      <h2>Demonstration Document Control</h2>
+      <span>Portfolio information</span>
+    </div>
+
     <table class="library-table">
+
       <tbody>
-        <tr><td><strong>Document</strong></td><td>SOP Library (ISO based) for Company ABC</td></tr>
-        <tr><td><strong>Author</strong></td><td>xxx</td></tr>
-        <tr><td><strong>Departments</strong></td><td>HR, Logistics, and Inventory</td></tr>
-        <tr><td><strong>Processes included</strong></td><td>Employee Onboarding; Asset Issue &amp; Return; Inventory Management</td></tr>
-        <tr><td><strong>Status</strong></td><td>Demonstration</td></tr>
-        <tr><td><strong>Version</strong></td><td>0.1</td></tr>
+
+        <tr>
+          <td><strong>Project</strong></td>
+          <td>SOP Library Architecture — Company ABC demonstration</td>
+        </tr>
+
+        <tr>
+          <td><strong>Portfolio</strong></td>
+          <td>LearningStudio42</td>
+        </tr>
+
+        <tr>
+          <td><strong>Focus</strong></td>
+          <td>
+            Learning Strategy, Instructional Design, SOP Development,
+            Process Mapping and Performance Support
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>Departments represented</strong></td>
+          <td>HR, Logistics, and Inventory</td>
+        </tr>
+
+        <tr>
+          <td><strong>Processes demonstrated</strong></td>
+          <td>
+            Employee Onboarding; Asset Issue &amp; Return;
+            Inventory Management
+          </td>
+        </tr>
+
+        <tr>
+          <td><strong>Status</strong></td>
+          <td>Portfolio Demonstration</td>
+        </tr>
+
+        <tr>
+          <td><strong>Version</strong></td>
+          <td>0.2</td>
+        </tr>
+
       </tbody>
+
     </table>
-    <div class="note">This is an ISO-style operational-document blueprint and does not represent ISO certification or a conformity assessment.</div>
+
+    <div class="note">
+      This is a fictional portfolio demonstration illustrating an
+      ISO-style operational-document architecture. It does not represent
+      ISO certification, a conformity assessment or a real Company ABC
+      engagement.
+    </div>
+
   </section>
 
-  <footer><span>Company ABC · SOP Library (ISO based)</span><span>Version 0.1 · Demonstration</span></footer>
+
+  <footer>
+
+    <span>LearningStudio42 · Learning Strategy &amp; Instructional Design</span>
+
+    <span>Portfolio Demonstration · Version 0.2</span>
+
+  </footer>
+
 </main>
 </div>
 
+
 <script>
+
 const input=document.getElementById('search');
+
 const cards=[...document.querySelectorAll('.card')];
+
 input.addEventListener('input',()=>{
+
   const q=input.value.trim().toLowerCase();
-  cards.forEach(c=>c.style.display=(!q || (c.dataset.search||'').includes(q))?'':'none');
+
+  cards.forEach(c=>{
+
+    c.style.display=
+      (!q || (c.dataset.search||'').includes(q))
+      ? ''
+      : 'none';
+
+  });
+
 });
+
 </script>
+
 </body>
 </html>
